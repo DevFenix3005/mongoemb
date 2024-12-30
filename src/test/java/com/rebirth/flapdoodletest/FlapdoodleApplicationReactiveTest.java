@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.stream.IntStream;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.ReactiveMongoTemplate;
@@ -12,8 +13,14 @@ import com.rebirth.flapdoodletest.entity.Book;
 
 public class FlapdoodleApplicationReactiveTest extends AbstractDatabaseTest {
 
+    @BeforeEach
+    void setUp(@Autowired final ReactiveMongoTemplate reactiveMongoTemplate) {
+        reactiveMongoTemplate.dropCollection(Book.class).block();
+    }
+
     @Test
     void exampleReactive1(@Autowired final ReactiveMongoTemplate reactiveMongoTemplate) {
+
         Book book = bookGenerator();
         Book mono = reactiveMongoTemplate.insert(Book.class)
             .one(book)

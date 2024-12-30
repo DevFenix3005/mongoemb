@@ -1,11 +1,8 @@
 package com.rebirth.flapdoodletest;
 
-import java.util.ArrayList;
-
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.mongodb.core.MongoTemplate;
 
 import com.rebirth.flapdoodletest.entity.Book;
 import com.rebirth.flapdoodletest.repository.BookRepository;
